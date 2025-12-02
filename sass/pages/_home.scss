@@ -1,0 +1,203 @@
+%components-base {
+  font-family: $font-display;
+}
+
+.country-forecast {
+  position: relative;
+  grid-column: center-start/ col-end 5;
+  border-radius: $border-medium;
+  padding: 2.4rem;
+  background-image: linear-gradient($color-primary-dark-3);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: $color-white;
+
+  @media only screen and (max-width: $bp-small) {
+    grid-row: 2;
+    grid-column: center-start/ center-end;
+  }
+
+  &__country {
+    font-size: 2rem;
+    font-family: $font-display;
+  }
+  &__date {
+    font-family: $font-display;
+    font-size: 1.2rem;
+    color: $color-grey-light-2;
+  }
+  &__temperature {
+    font-size: 7.4rem;
+    font-weight: 200;
+    font-style: italic;
+
+    @media only screen and (max-width: $bp-largest) {
+      font-size: 5.2rem;
+    }
+  }
+}
+.day {
+  background-image: url(../img/day1.jpg);
+  background-size: cover;
+}
+
+.night {
+  background-image: url(../img/night.jpg);
+  background-size: cover;
+}
+
+.hourly-forecast {
+  @extend %components-base;
+  background-color: $color-primary-dark-2;
+  border-radius: $border-medium;
+  padding: 1.6rem;
+  color: $color-white;
+
+  grid-row: 2/ 5;
+  grid-column: col-start 6 / center-end;
+  max-height: 61rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  overflow-y: auto;
+
+  @media only screen and (max-width: $bp-small) {
+    grid-row: 6;
+    grid-column: center-start / center-end;
+  }
+
+  & > *:not(:first-child) {
+    min-height: 6rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    background-color: $color-primary-dark-3;
+    padding: 0.4rem 1.2rem;
+    border-radius: $border-medium;
+    border: 1px solid $color-primary-light;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+  }
+
+  &__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: $color-white;
+  }
+
+  &__hour {
+    font-size: 1.8rem;
+    margin-right: auto;
+  }
+}
+
+.forecast-metrics {
+  @extend %components-base;
+  grid-row: 3;
+  grid-column: center-start/ col-end 5;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.2rem;
+  color: $color-grey-light-2;
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-row: 3/5;
+    align-items: center;
+  }
+  @media only screen and (max-width: $bp-small) {
+    grid-column: center-start/center-end;
+  }
+
+  & > * {
+    background-color: $color-primary-dark-3;
+    padding: 1.2rem 2.4rem;
+    border-radius: $border-medium;
+    border: 1px solid $color-primary-light;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  &__value {
+    color: $color-white;
+    font-size: 2.4rem;
+  }
+}
+.daily-forecast {
+  @extend %components-base;
+  grid-column: center-start/ col-end 5;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, min-content));
+  grid-template-rows: min-content minmax(15rem, min-content);
+  gap: 1.2rem;
+
+  color: $color-white;
+
+  @media only screen and (max-width: $bp-largest) {
+    grid-column: center-start/center-end;
+  }
+
+  & > *:not(:first-child) {
+    background-color: $color-primary-dark-3;
+    padding: 1.2rem;
+    border-radius: $border-medium;
+    border: 1px solid $color-primary-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  &__title {
+    grid-column: 1/-1;
+    font-family: inherit;
+    font-weight: 500;
+  }
+
+  &__deg {
+    display: flex;
+    gap: 2rem;
+  }
+  &__icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    fill: $color-white;
+  }
+}
+.bookmarks {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  &__icon {
+    cursor: pointer;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: inherit;
+    fill: $color-white;
+  }
+  &__btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    border: none;
+    background-color: transparent;
+  }
+
+  &__text {
+    font-size: 1.6rem;
+  }
+}

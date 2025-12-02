@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather | Detailed Forecasts Application</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans:300, 500, 600, 600i, 700|Bricolage+Grotesque:700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png" />
+    <script type="module" defer src="src/controller.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!------------------------- HEADER ------------------------>
+      <header class="header">
+        <div class="header__logo mb-medium">
+          <img
+            src="img/logo.png"
+            alt="Weather Logo"
+            class="header__logo--img"
+          />
+          <p class="header__logo--text">Weather Now</p>
+
+          <!-- DROPDOWN COMPONENT -->
+          <div class="dropdown">
+            <!-- DROPDOWN  -->
+            <div class="dropdown__title">
+              <svg class="dropdown__icon">
+                <use xlink:href="img/symbol-defs.svg#icon-cog"></use>
+              </svg>
+              <span>Units</span>
+              <button class="dropdown__button dropdown__button--setting">
+                <svg class="dropdown__icon">
+                  <use
+                    xlink:href="img/symbol-defs.svg#icon-chevron-small-down"
+                  ></use>
+                </svg>
+              </button>
+            </div>
+            <!-- DROPDOWN MENU -->
+            <ul class="dropdown__menu dropdown__menu--setting">
+              <!-- TEMPERATURE OPTIONS -->
+              <li class="dropdown__item">
+                <ul class="dropdown__list">
+                  <p class="dropdown__item--title">Temperature</p>
+                  <li
+                    class="dropdown__list--item"
+                    data-unit="temperature"
+                    data-value="celsius"
+                  >
+                    Celsius
+                  </li>
+                  <li
+                    class="dropdown__list--item"
+                    data-unit="temperature"
+                    data-value="fahrenheit"
+                  >
+                    Fahrenheit
+                  </li>
+                </ul>
+              </li>
+              <!-- WIND SPEED OPTIONS -->
+              <li class="dropdown__item">
+                <ul class="dropdown__list">
+                  <p class="dropdown__item--title">Wind Speed</p>
+                  <li
+                    class="dropdown__list--item"
+                    data-unit="wind-speed"
+                    data-value="kmh"
+                  >
+                    km/h
+                  </li>
+                  <li
+                    class="dropdown__list--item"
+                    data-unit="wind-speed"
+                    data-value="mph"
+                  >
+                    mph
+                  </li>
+                </ul>
+              </li>
+              <!-- PRECIPITATION OPTIONS -->
+              <li class="dropdown__item">
+                <ul class="dropdown__list">
+                  <p class="dropdown__item--title">Precipitation</p>
+                  <li
+                    class="dropdown__list--item"
+                    data-unit="precipitation"
+                    data-value="mm"
+                  >
+                    Millimeters (mm)
+                  </li>
+                  <li
+                    class="dropdown__list--item"
+                    data-unit="precipitation"
+                    data-value="inch"
+                  >
+                    Inches (in)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <!-- DROPDOWN -->
+            <div class="dropdown__title">
+              <button class="dropdown__button dropdown__button--fav">
+                <svg class="bookmarks__icon">
+                  <use xlink:href="img/symbol-defs.svg#icon-heart"></use>
+                </svg>
+              </button>
+            </div>
+            <ul class="dropdown__menu dropdown__menu--fav"></ul>
+          </div>
+        </div>
+        <!-- MAIN HEADING -->
+        <h1 class="heading-primary center-text mb-medium">
+          How&apos;s the sky looking today?
+        </h1>
+        <!-- SEARCH-BAR COMPONENT -->
+        <form class="search-bar">
+          <div class="search-bar__box">
+            <input
+              type="text"
+              class="search-bar__input"
+              placeholder="Search for a place..."
+            />
+            <svg class="search-bar__icon">
+              <use xlink:href="img/symbol-defs.svg#icon-magnifying-glass"></use>
+            </svg>
+          </div>
+          <button class="btn">Search</button>
+        </form>
+      </header>
+
+      <!------------------------- COUNTRY FORECAST ------------------------>
+      <div class="country-forecast"></div>
+
+      <!------------------------- HOURLY FORECAST  ------------------------>
+      <div class="hourly-forecast">
+        <div class="hourly-forecast__title">
+          <span>Hourly forecast</span>
+
+          <!-- DROPDOWN COMPONENT -->
+          <div class="dropdown">
+            <!-- DROPDOWN -->
+            <div class="dropdown__title">
+              <span class="dropdown__title--day">--</span>
+              <button class="dropdown__button dropdown__button--day">
+                <svg class="dropdown__icon">
+                  <use
+                    xlink:href="img/symbol-defs.svg#icon-chevron-small-down"
+                  ></use>
+                </svg>
+              </button>
+            </div>
+
+            <!-- DROPDOWN MENU -->
+            <ul class="dropdown__menu dropdown__menu--day">
+              <!-- DAYS OPTIONS -->
+              <li class="dropdown__item" data-value="Monday">Monday</li>
+              <li class="dropdown__item" data-value="Tuesday">Tuesday</li>
+              <li class="dropdown__item" data-value="Wednesday">Wednesday</li>
+              <li class="dropdown__item" data-value="Thursday">Thursday</li>
+              <li class="dropdown__item" data-value="Friday">Friday</li>
+              <li class="dropdown__item" data-value="Saturday">Saturday</li>
+              <li class="dropdown__item" data-value="Sunday">Sunday</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!------------------------- FORECAST METRICS ------------------------>
+      <div class="forecast-metrics">
+        <!-- METRIC#1 FEELS LIKE -->
+        <div class="forecast-metrics--1">
+          <p class="forecast-metrics__title">Feels like</p>
+          <p class="forecast-metrics__value">--</p>
+        </div>
+        <!-- METRIC#2 HUMIDITY -->
+        <div class="forecast-metrics--2">
+          <p class="forecast-metrics__title">Humidity</p>
+          <p class="forecast-metrics__value">--</p>
+        </div>
+        <!-- METRIC#3 WIND SPEED -->
+        <div class="forecast-metrics--3">
+          <p class="forecast-metrics__title">Wind</p>
+          <p class="forecast-metrics__value">--</p>
+        </div>
+        <!-- METRIC#4 PRECIPITATION -->
+        <div class="forecast-metrics--4">
+          <p class="forecast-metrics__title">Precipitation</p>
+          <p class="forecast-metrics__value">--</p>
+        </div>
+      </div>
+
+      <!------------------------- DAILY FORECAST ------------------------>
+      <div class="daily-forecast">
+        <p class="daily-forecast__title">Daily forecast</p>
+        <!-- 7-DAYS BOX -->
+        <div class="daily-forecast-box"></div>
+        <div class="daily-forecast-box"></div>
+        <div class="daily-forecast-box"></div>
+        <div class="daily-forecast-box"></div>
+        <div class="daily-forecast-box"></div>
+        <div class="daily-forecast-box"></div>
+        <div class="daily-forecast-box"></div>
+      </div>
+    </div>
+
+    <div class="popup">
+      <div class="popup__content">
+        <button class="popup__btn">
+          <svg class="popup__icon">
+            <use xlink:href="img/symbol-defs.svg#icon-cross"></use>
+          </svg>
+        </button>
+        <span class="popup__text"> Erron Inavlid City </span>
+      </div>
+    </div>
+  </body>
+</html>
